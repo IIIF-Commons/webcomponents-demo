@@ -50,9 +50,13 @@
                 gallery.manifest = evt.detail.id;
             });
 
+            explorer.addEventListener('onUpLevel', function(evt) {
+                gallery.manifest = null;
+            });
+
             manifestInput.value = manifest;
             explorer.manifest = manifest;
-            //gallery.manifest = "https://edsilv.github.io/biiif-workshop/collection/index.json";
+            //gallery.manifest = manifest;
         });
 
     </script>
