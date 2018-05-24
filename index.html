@@ -6,26 +6,29 @@
     <title>Webcomponents Demo</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <script src="https://unpkg.com/manifesto.js/dist/client/manifesto.bundle.js"></script>
+    <style>
+        body > div {
+            padding: 20px 0 20px 0;
+        }
+    </style>
     <script src="https://unpkg.com/iiif-explorer/dist/iiifexplorer.js"></script>
     <script src="https://unpkg.com/iiif-gallery/dist/iiifgallery.js"></script>
 </head>
 <body>
-    <input type="text" name="manifest" id="manifest"><button id="setmanifest">Set Manifest</button>
-    <iiif-explorer></iiif-explorer>
-    <iiif-gallery></iiif-gallery>
+    <div>
+        <input type="text" name="manifest" id="manifest"><button id="setmanifest">Set Manifest</button>
+    </div>
+    <div>
+        <iiif-explorer></iiif-explorer>
+    </div>
+    <div>
+        <iiif-gallery></iiif-gallery>
+    </div>
 
     <script>
 
         var manifest = "https://iiif-commons.github.io/webcomponents-demo/collection/index.json";
         var manifestInput, setManifest, explorer, gallery;
-
-        function updateExplorer() {
-            explorer.manifest = manifest;
-        }
-
-        function updateGallery(manifest) {
-            gallery.manifest = manifest;
-        }
 
         window.addEventListener('DOMContentLoaded', function() {
 
@@ -35,18 +38,21 @@
             gallery = document.querySelector('iiif-gallery');
 
             setManifest.addEventListener('click', function() {
-                manifest = manifestInput.text();
+                manifest = manifestInput.value;
                 explorer.manifest = manifest;
             });
 
+            explorer.addEventListener('onSelectCollection', function(evt) {
+                gallery.manifest = evt.detail.id;
+            });
+            
             explorer.addEventListener('onSelectManifest', function(evt) {
-                gallery.manifest = evt.detail.manifest;
+                gallery.manifest = evt.detail.id;
             });
 
             manifestInput.value = manifest;
             explorer.manifest = manifest;
-            gallery.manifest = manifest;
-            //updateGallery(manifest);
+            //gallery.manifest = "https://edsilv.github.io/biiif-workshop/collection/index.json";
         });
 
     </script>
