@@ -1,0 +1,25 @@
+{
+  "name": "webcomponents-demo",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "http-server -c-1",
+    "build": "biiif collection -u https://iiif-commons.github.io/webcomponents-demo/collection"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/IIIF-Commons/webcomponents-demo.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/IIIF-Commons/webcomponents-demo/issues"
+  },
+  "homepage": "https://github.com/IIIF-Commons/webcomponents-demo#readme",
+  "devDependencies": {
+    "biiif-cli": "0.0.25",
+    "http-server": "^0.11.1"
+  }
+}

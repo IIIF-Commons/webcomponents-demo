@@ -1,0 +1,29 @@
+{
+  "id": "https://iiif-commons.github.io/webcomponents-demo/collection/index.json",
+  "type": "Collection",
+  "items": [
+    {
+      "id": "https://sophiedixon.github.io/3d-portfolio/collection/index.json",
+      "type": "Collection",
+      "label": {
+        "@none": [
+          "3D Portfolio"
+        ]
+      }
+    },
+    {
+      "id": "https://edsilv.github.io/biiif-workshop/collection/index.json",
+      "type": "Collection",
+      "label": {
+        "@none": [
+          "Cats"
+        ]
+      }
+    }
+  ],
+  "label": {
+    "@none": [
+      "collection"
+    ]
+  }
+}

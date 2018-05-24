@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Webcomponents Demo</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <script src="https://unpkg.com/manifesto.js/dist/client/manifesto.bundle.js"></script>
+    <script src="https://unpkg.com/iiif-explorer/dist/iiifexplorer.js"></script>
+    <script src="https://unpkg.com/iiif-gallery/dist/iiifgallery.js"></script>
+</head>
+<body>
+    <input type="text" name="manifest" id="manifest"><button id="setmanifest">Set Manifest</button>
+    <iiif-explorer></iiif-explorer>
+    <iiif-gallery></iiif-gallery>
+
+    <script>
+
+        var manifest = "https://iiif-commons.github.io/webcomponents-demo/collection/index.json";
+        var manifestInput, setManifest, explorer, gallery;
+
+        function updateExplorer() {
+            explorer.manifest = manifest;
+        }
+
+        function updateGallery(manifest) {
+            gallery.manifest = manifest;
+        }
+
+        window.addEventListener('DOMContentLoaded', function() {
+
+            manifestInput = document.getElementById('manifest'); 
+            setManifest = document.getElementById('setmanifest');
+            explorer = document.querySelector('iiif-explorer');
+            gallery = document.querySelector('iiif-gallery');
+
+            setManifest.addEventListener('click', function() {
+                manifest = manifestInput.text();
+                explorer.manifest = manifest;
+            });
+
+            explorer.addEventListener('onSelectManifest', function(evt) {
+                gallery.manifest = evt.detail.manifest;
+            });
+
+            manifestInput.value = manifest;
+            explorer.manifest = manifest;
+            gallery.manifest = manifest;
+            //updateGallery(manifest);
+        });
+
+    </script>
+</body>
+</html>
